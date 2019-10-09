@@ -126,7 +126,6 @@ namespace Services.Models
         ;;; <summary>
         ;;; Y/N Boolean Field
         ;;; </summary>
-        {StringLength(1, ErrorMessage="Y/N Boolean Field cannot exceed 1 characters. ")}
         public property YnBoolean, boolean
             method get
             proc

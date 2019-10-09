@@ -78,6 +78,80 @@ namespace Services.Controllers
             mreturn new SingleResult<Testfile>(_DbContext.Testfiles.AsNoTracking().FindQuery<Testfile>(_DbContext, aId))
         endmethod
 
+        {ODataRoute("Testfiles(Id={aId})")}
+        ;;; <summary>
+        ;;; Create (with a client-supplied primary key) or replace a testfile.
+        ;;; </summary>
+        ;;; <param name="aId">ID</param>
+        ;;; <returns>Returns an IActionResult indicating the status of the operation and containing any data that was returned.</returns>
+        public method PutTestfile, @IActionResult
+            {FromODataUri}
+            required in aId, int
+            {FromBody}
+            required in aTestfile, @Testfile
+        proc
+            ;; Validate inbound data
+            if (!ModelState.IsValid)
+                mreturn BadRequest(ModelState)
+
+            ;;Ensure that the key values in the URI win over any data that may be in the model object
+            aTestfile.Id = aId
+
+            try
+            begin
+                ;;Add and commit
+                data existing = _DbContext.Testfiles.Find(aId)
+                if(existing == ^null) then
+                begin
+                    _DbContext.Testfiles.Add(aTestfile)
+                    _DbContext.SaveChanges()
+                    mreturn Created(aTestfile)
+                end
+                else
+                begin
+                    aTestfile.CopyTo(existing)
+                    _DbContext.SaveChanges()
+                    mreturn NoContent()
+                end
+            end
+            catch (e, @InvalidOperationException)
+            begin
+                mreturn BadRequest(e)
+            end
+            catch (e, @ValidationException)
+            begin
+                ModelState.AddModelError("RelationValidation",e.Message)
+                mreturn BadRequest(ModelState)
+            end
+            endtry
+
+        endmethod
+
+        {ODataRoute("Testfiles(Id={aId})")}
+        ;;; <summary>
+        ;;; Delete a testfile.
+        ;;; </summary>
+        ;;; <param name="aId">ID</param>
+        ;;; <returns>Returns an IActionResult indicating the status of the operation and containing any data that was returned.</returns>
+        public method DeleteTestfile, @IActionResult
+            {FromODataUri}
+            required in aId, int
+        proc
+            ;;Get the testfile to be deleted
+            data testfileToRemove = _DbContext.Testfiles.Find(aId)
+
+            ;;Did we find it?
+            if (testfileToRemove == ^null)
+                mreturn NotFound()
+
+            ;;Delete and commit
+            _DbContext.Testfiles.Remove(testfileToRemove)
+            _DbContext.SaveChanges()
+
+            mreturn NoContent()
+
+        endmethod
+
     endclass
 
 endnamespace

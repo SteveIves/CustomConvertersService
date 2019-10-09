@@ -1,0 +1,172 @@
+{
+    "info": {
+        "_postman_id": "4ae9554d-de90-4ef7-8291-ff88332bdbe2",
+        "name": "Custom Fields Tests",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "_postman_id": "f68b918b-ec57-42e3-962e-160ef1fd909e",
+            "name": "Testfile Tests",
+            "item": [
+                {
+                    "_postman_id": "0746da8a-a1e2-41e4-82b9-e125acdad341",
+                    "name": "Read testfiles",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "https://localhost:8086/odata/v1/Testfiles",
+                            "protocol": "https",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8086",
+                            "path": [
+                                "odata",
+                                "v1",
+                                "Testfiles"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+                ,
+                {
+                    "_postman_id": "1d291584-e801-40cf-81b7-72d32738728c",
+                    "name": "Read testfile",
+                    "request": {
+                    "method": "GET",
+                    "header": [
+                        {
+                        "key": "Accept",
+                        "value": "application/json"
+                        }
+                    ],
+                    "body": {
+                        "mode": "raw",
+                        "raw": ""
+                    },
+                    "url": {
+                        "raw": "https://localhost:8086/odata/v1/Testfiles(Id=123)",
+                        "protocol": "https",
+                        "host": [
+                            "localhost"
+                        ],
+                        "port": "8086",
+                        "path": [
+                            "odata",
+                            "v1",
+                            "Testfiles(Id=123)"
+                        ]
+                    }
+                    },
+                    "response": []
+                }
+                ,
+                {
+                    "_postman_id": "41031280-fc18-4a75-8281-5655bdf33d80",
+                    "name": "Create or update testfile",
+                    "request": {
+                    "method": "PUT",
+                    "header": [
+                        {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                        }
+                    ],
+                    "body": {
+                        "mode": "raw",
+                         "raw": "{\n    \"Id\": 123,\n    \"HistoryDate\": 123,\n    \"HistoryTime\": 123,\n    \"HistoryPeriod\": 123,\n    \"YnBoolean\": \"ABC\"\n}"
+                    },
+                    "url": {
+                        "raw": "https://localhost:8086/odata/v1/Testfiles(Id=123)",
+                        "protocol": "https",
+                        "host": [
+                            "localhost"
+                        ],
+                        "port": "8086",
+                        "path": [
+                            "odata",
+                            "v1",
+                            "Testfiles(Id=123)"
+                        ]
+                    }
+                    },
+                    "response": []
+                }
+                ,
+                {
+                    "_postman_id": "1ffa2642-92f6-444d-af3f-aa50fd44ceae",
+                    "name": "Delete testfile",
+                    "request": {
+                    "method": "DELETE",
+                    "header": [
+                        {
+                        "key": "Accept",
+                        "value": "application/json"
+                        }
+                    ],
+                    "body": {
+                        "mode": "raw",
+                        "raw": ""
+                    },
+                    "url": {
+                        "raw": "https://localhost:8086/odata/v1/Testfiles(Id=123)",
+                        "protocol": "https",
+                        "host": [
+                            "localhost"
+                        ],
+                        "port": "8086",
+                        "path": [
+                            "odata",
+                            "v1",
+                            "Testfiles(Id=123)"
+                        ]
+                    }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "id": "891fe84b-4926-497e-b7da-3fb748a6b868",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "id": "e2f16c74-ca22-4f42-adde-2973bddfa296",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "id": "bd6f096f-5211-4e1d-ba95-e944e7e7b89a",
+            "key": "AccessToken",
+            "value": "",
+            "type": "string"
+        }
+    ]
+}

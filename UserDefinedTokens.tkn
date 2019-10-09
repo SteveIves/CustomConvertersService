@@ -9,7 +9,7 @@
 <DATA_FOLDER>SampleData</DATA_FOLDER>
 ;
 <API_DOCS_PATH>api-docs</API_DOCS_PATH>
-<API_TITLE>Harmony Core Sample API</API_TITLE>
+<API_TITLE>Custom Fields Tests</API_TITLE>
 <API_VERSION>1</API_VERSION>
 <API_TERMS>Open Source</API_TERMS>
 <API_DESCRIPTION>This environment presents an example of using Harmony Core to expose a collection of RESTful Web Service endpoints that allow you to interact with a small sample dataset.</API_DESCRIPTION>

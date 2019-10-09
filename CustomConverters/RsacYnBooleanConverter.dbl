@@ -35,7 +35,7 @@ namespace Harmony.Core.Converters
         public static method ConvertBack, a
             booleanValue, boolean
         proc
-            mreturn Convert.ToBoolean(booleanValue) ? "Y" : "N"
+            mreturn booleanValue ? "Y" : "N"
         endmethod
 
         ;;; <summary>
