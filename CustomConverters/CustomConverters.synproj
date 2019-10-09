@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="restore;Build">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DefaultLanguageSourceExtension>.dbl</DefaultLanguageSourceExtension>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <ProjectGuid>{bdc324ed-cf19-4709-a4eb-3b70c5775c76}</ProjectGuid>
+    <Name>CustomConverters</Name>
+    <Prefer32Bit>False</Prefer32Bit>
+    <IncludeDebugInformation>False</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="RsacHistoryDateConverter.dbl" />
+    <Compile Include="RsacHistoryPeriodConverter.dbl" />
+    <Compile Include="RsacHistoryTimeConverter.dbl" />
+    <Compile Include="RsacYnBooleanConverter.dbl" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Harmony.Core">
+      <Version>1.0.77</Version>
+    </PackageReference>
+    <PackageReference Include="Synergex.SynergyDE.Build" Version="11.1.*" />
+    <PackageReference Include="Synergex.SynergyDE.synrnt" Version="11.1.*" />
+  </ItemGroup>
+</Project>

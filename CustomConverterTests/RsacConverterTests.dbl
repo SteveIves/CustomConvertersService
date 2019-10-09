@@ -1,0 +1,85 @@
+
+import Microsoft.VisualStudio.TestTools.UnitTesting
+import System
+import System.Collections.Generic
+import System.Text
+import Harmony.Core.Converters
+
+namespace CustomConverterTests
+
+    {TestClass}
+    public class RsacConverterTests
+
+        {TestMethod}
+        public method FromHistoryDateTest, void
+        proc
+            data stringDate, string, RsacHistoryDateConverter.Convert(79808991)
+            Assert.IsTrue(stringDate.Equals("2019-10-08"),"Incorrect date!")
+        endmethod
+
+        {TestMethod}
+        public method ToHistoryDateTest, void
+        proc
+            data historyDate, d8, RsacHistoryDateConverter.ConvertBack("2019-10-08")
+            Assert.IsTrue(historyDate==79808991,"Incorrect history date!")
+        endmethod
+
+        {TestMethod}
+        public method FromHistoryTimeTest, void
+        proc
+            data stringTime, string, RsacHistoryTimeConverter.Convert(879897)
+            Assert.IsTrue(stringTime=="12:01:02","Incorrect time!")
+        endmethod
+
+        {TestMethod}
+        public method ToHistoryTimeTest, void
+        proc
+            data historyTime, d6, RsacHistoryTimeConverter.ConvertBack("12:01:02")
+            Assert.IsTrue(historyTime==879897,"Incorrect history time!")
+        endmethod
+
+        {TestMethod}
+        public method FromHistoryPeriodTest, void
+        proc
+            data regularPeriod, d2, RsacHistoryPeriodConverter.Convert(98)
+            Assert.IsTrue(regularPeriod==1,"Incorrect period!")
+        endmethod
+
+        {TestMethod}
+        public method ToHistoryPeriodTest, void
+        proc
+            data historyPeriod, d2, RsacHistoryPeriodConverter.ConvertBack(1)
+            Assert.IsTrue(historyPeriod==98,"Incorrect history period!")
+        endmethod
+
+        {TestMethod}
+        public method FromYnTestTrue, void
+        proc
+            data boolValue, boolean, RsacYnBooleanConverter.Convert("Y")
+            Assert.IsTrue(boolValue==true,"Incorrect boolean value!")
+        endmethod
+
+        {TestMethod}
+        public method ToYnTestTrue, void
+        proc
+            data ynValue, a1, RsacYnBooleanConverter.ConvertBack(true)
+            Assert.IsTrue(ynValue=="Y","Incorrect Y/N value!")
+        endmethod
+
+        {TestMethod}
+        public method FromYnTestFalse, void
+        proc
+            data boolValue, boolean, RsacYnBooleanConverter.Convert("N")
+            Assert.IsTrue(boolValue==false,"Incorrect boolean value!")
+        endmethod
+
+        {TestMethod}
+        public method ToYnTestFalse, void
+        proc
+            data ynValue, a1, RsacYnBooleanConverter.ConvertBack(false)
+            Assert.IsTrue(ynValue=="N","Incorrect Y/N value!")
+        endmethod
+
+    endclass
+
+endnamespace

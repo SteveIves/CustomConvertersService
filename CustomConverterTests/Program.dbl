@@ -1,0 +1,6 @@
+import System
+
+main
+proc
+    Console.WriteLine("Use DOTNET TEST!")
+endmain

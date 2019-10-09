@@ -1,0 +1,62 @@
+;;**********************************************************************
+;;
+;; Title:       RsacHistoryDateConverter.dbl
+;;
+;; Type:        Class
+;;
+;;*****************************************************************************
+
+import System
+import Harmony.Core.Converters
+
+namespace Harmony.Core.Converters
+
+    ;;; <summary>
+    ;;; Convert between an RSAC history date and a standard DateTime.
+    ;;; A history date is a YYYYMMDD date subtracted from the value 99999999.
+    ;;; </summary>
+    public static class RsacHistoryDateConverter
+
+        ;;; <summary>
+        ;;; Convert from a history date to a string.
+        ;;; </summary>
+        ;;; <param name="value">History date to convert.</param>
+        ;;; <returns>Returns the DateTime represented by the history date passed in.</returns>
+        public static method Convert, string
+            value, d
+        proc
+            data historyDate, d8, value
+            data yyyymmdd, d8, -historyDate+99999999
+            mreturn %string(yyyymmdd,"XXXX-XX-XX")
+        endmethod
+
+        ;;; <summary>
+        ;;; Convert from a string to a history date.
+        ;;; </summary>
+        ;;; <param name="value">DateTime to convert.</param>
+        ;;; <returns>Returns the history date represented by the YYYYMMDD date passed in.</returns>
+        public static method ConvertBack, d
+            stringDate, string
+        proc
+            ;;Turn the string time into a YYYYMMDD time using a RegEx
+            data yyyymmdd, d8, %integer(RegexificationFactory.RegexifyMe("XXXX-XX-XX").GetData(stringDate))
+            ;;Return an RSAC history date
+            mreturn 99999999-yyyymmdd
+        endmethod
+
+        ;;; <summary>
+        ;;; 
+        ;;; </summary>
+        public class LiteralFormatter implements ILiteralFormatter
+
+            public virtual method FormatLiteral, string
+                inputLiteral, string 
+            proc
+                mreturn %string(RsacHistoryDateConverter.ConvertBack(inputLiteral))
+            endmethod
+
+        endclass
+
+    endclass
+
+endnamespace

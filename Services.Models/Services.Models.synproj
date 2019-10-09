@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="restore;Build">
+  <Import Project="..\Common.props" />
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DefaultLanguageSourceExtension>.dbl</DefaultLanguageSourceExtension>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <Name>Services.Models</Name>
+    <ProjectGuid>{3B38F84D-D765-47B7-9ED9-7062801DB573}</ProjectGuid>
+    <EnableCommonProperties>True</EnableCommonProperties>
+    <Prefer32Bit>False</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Harmony.Core">
+      <Version>1.0.77</Version>
+    </PackageReference>
+    <PackageReference Include="Harmony.Core.EF">
+      <Version>1.0.77</Version>
+    </PackageReference>
+    <PackageReference Include="Synergex.SynergyDE.Build" Version="11.0.1001.2586" />
+    <PackageReference Include="Synergex.SynergyDE.synrnt" Version="10.3.3072" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSettings.dbl" />
+    <Compile Include="DbContext.dbl" />
+    <Compile Include="Testfile.dbl" />
+    <Compile Include="TestfileMetaData.dbl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomConverters\CustomConverters.synproj">
+      <Name>CustomConverters</Name>
+      <Project>{bdc324ed-cf19-4709-a4eb-3b70c5775c76}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.synproj">
+      <Name>Repository</Name>
+      <Project>{cc6c33fb-c46c-4484-972c-c454743f8add}</Project>
+      <Private>True</Private>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,61 @@
+;;**********************************************************************
+;;
+;; Title:       RsacHistoryPeriodConverter.dbl
+;;
+;; Type:        Class
+;;
+;;*****************************************************************************
+
+import System
+import Harmony.Core.Converters
+
+namespace Harmony.Core.Converters
+
+    ;;; <summary>
+    ;;; Convert between an RSAC history period number and a standard D2 period number.
+    ;;; A history period number is a D2 value subtracted from the value 99.
+    ;;; </summary>
+    public static class RsacHistoryPeriodConverter
+
+        ;;; <summary>
+        ;;; Convert from a history period number to a D2 period number.
+        ;;; </summary>
+        ;;; <param name="value">History period number to convert.</param>
+        ;;; <returns>Returns the D2 period number represented by the history period number passed in.</returns>
+        public static method Convert, int
+            value, d
+        proc
+            data historyPeriod, d2, value
+            data regularPeriod, int, -historyPeriod+99
+            mreturn regularPeriod
+        endmethod
+
+        ;;; <summary>
+        ;;; Convert from a D2 period number to a history period number.
+        ;;; </summary>
+        ;;; <param name="value">D2 period number to convert.</param>
+        ;;; <returns>Returns the history period number represented by the D2 period number passed in.</returns>
+        public static method ConvertBack, d
+            value, int
+        proc
+            data d2period, int, value
+            data historyPeriod, d2, 99-d2period
+            mreturn historyPeriod
+        endmethod
+
+        ;;; <summary>
+        ;;; 
+        ;;; </summary>
+        public class LiteralFormatter implements ILiteralFormatter
+
+            public virtual method FormatLiteral, string
+                inputLiteral, string 
+            proc
+                mreturn ^a(RsacHistoryPeriodConverter.ConvertBack(%integer(inputLiteral)))
+            endmethod
+
+        endclass
+
+    endclass
+
+endnamespace

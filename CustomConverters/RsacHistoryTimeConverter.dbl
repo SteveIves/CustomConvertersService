@@ -1,0 +1,73 @@
+;;**********************************************************************
+;;
+;; Title:       RsacHistoryTimeConverter.dbl
+;;
+;; Type:        Class
+;;
+;;*****************************************************************************
+
+import System
+import Harmony.Core.Converters
+
+namespace Harmony.Core.Converters
+
+    ;;; <summary>
+    ;;; Convert between an RSAC history time and a "HH:MM:SS" string time.
+    ;;; A history time is a HHMMSS time subtracted from the value 999999.
+    ;;; </summary>
+    public static class RsacHistoryTimeConverter
+
+        ;;; <summary>
+        ;;; Convert from a history time to a HH:MM:SS time.
+        ;;; </summary>
+        ;;; <param name="historyTime">History time to convert.</param>
+        ;;; <returns>Returns the HH:MM:SS time represented by the history time passed in.</returns>
+        public static method Convert, string
+            historyTime, d
+        proc
+            data hhmmss, d6, -historyTime+999999
+            mreturn %string(hhmmss,"XX:XX:XX")
+        endmethod
+
+        ;;; <summary>
+        ;;; Convert from a HH:MM:SS time to a history time.
+        ;;; </summary>
+        ;;; <param name="stringTime">HH:MM:SS time to convert.</param>
+        ;;; <returns>Returns the history time represented by the HH:MM:SS time passed in.</returns>
+        public static method ConvertBack, d
+            stringTime, string
+            record
+                hhmmss, d6
+                hh,     d2 @hhmmss
+                mm,     d2 @hhmmss + 2
+                ss,     d2 @hhmmss + 4
+            endrecord
+        proc
+            ;;Turn the string time into a D6 time using a RegEx
+            hhmmss = %integer(RegexificationFactory.RegexifyMe("XX:XX:XX").GetData(stringTime))
+
+            ;;Do we have a valid time?
+            if (hh < 0 || hh > 24 || mm < 0 || mm > 59 || ss < 0 || ss > 59)
+                throw new ApplicationException("Invalid time value!")
+
+            ;;Turn the D6 time into an RSAC history time
+            mreturn 999999-hhmmss
+ 
+        endmethod
+
+        ;;; <summary>
+        ;;; 
+        ;;; </summary>
+        public class LiteralFormatter implements ILiteralFormatter
+
+            public virtual method FormatLiteral, string
+                inputLiteral, string 
+            proc
+                mreturn %string(RsacHistoryTimeConverter.ConvertBack(inputLiteral))
+            endmethod
+
+        endclass
+
+    endclass
+
+endnamespace

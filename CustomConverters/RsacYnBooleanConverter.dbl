@@ -1,0 +1,56 @@
+;;**********************************************************************
+;;
+;; Title:       RsacYnBooleanConverter.dbl
+;;
+;; Type:        Class
+;;
+;;*****************************************************************************
+
+import System
+import Harmony.Core.Converters
+
+namespace Harmony.Core.Converters
+
+    ;;; <summary>
+    ;;; Convert between an RSAC A1 Y/N field and a boolean.
+    ;;; </summary>
+    public static class RsacYnBooleanConverter
+
+        ;;; <summary>
+        ;;; Convert from a Y/N value to a boolean.
+        ;;; </summary>
+        ;;; <param name="ynValue">Y/N value to convert.</param>
+        ;;; <returns>Returns the boolean equivalent of the Y/N value passed in.</returns>
+        public static method Convert, boolean
+            ynValue, a
+        proc
+            mreturn Convert.ToString(ynValue).ToUpper() == "Y"
+        endmethod
+
+        ;;; <summary>
+        ;;; Convert from boolean to a Y/N value.
+        ;;; </summary>
+        ;;; <param name="booleanValue">Boolean value to convert.</param>
+        ;;; <returns>Returns the Y/N value of the boolean passed in.</returns>
+        public static method ConvertBack, a
+            booleanValue, boolean
+        proc
+            mreturn Convert.ToBoolean(booleanValue) ? "Y" : "N"
+        endmethod
+
+        ;;; <summary>
+        ;;; 
+        ;;; </summary>
+        public class LiteralFormatter implements ILiteralFormatter
+
+            public virtual method FormatLiteral, string
+                inputLiteral, string 
+            proc
+                mreturn RsacYnBooleanConverter.ConvertBack(inputLiteral.ToLower()=="true")
+            endmethod
+
+        endclass
+
+    endclass
+
+endnamespace
