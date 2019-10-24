@@ -1,16 +1,16 @@
 {
     "info": {
-        "_postman_id": "4ae9554d-de90-4ef7-8291-ff88332bdbe2",
+        "_postman_id": "d6c95738-6b21-4b46-8702-7a52cad4fc41",
         "name": "Custom Fields Tests",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
         {
-            "_postman_id": "f68b918b-ec57-42e3-962e-160ef1fd909e",
+            "_postman_id": "7bd78f1b-a26d-4f97-95e1-82bd09401573",
             "name": "Testfile Tests",
             "item": [
                 {
-                    "_postman_id": "0746da8a-a1e2-41e4-82b9-e125acdad341",
+                    "_postman_id": "ea85ae16-d6c6-4dd0-835f-04de8a37d59b",
                     "name": "Read testfiles",
                     "request": {
                         "method": "GET",
@@ -42,7 +42,7 @@
                 }
                 ,
                 {
-                    "_postman_id": "1d291584-e801-40cf-81b7-72d32738728c",
+                    "_postman_id": "fd7d6bbd-5038-4416-ba2d-8f704f08be88",
                     "name": "Read testfile",
                     "request": {
                     "method": "GET",
@@ -74,7 +74,7 @@
                 }
                 ,
                 {
-                    "_postman_id": "41031280-fc18-4a75-8281-5655bdf33d80",
+                    "_postman_id": "9fd7b420-2041-4f49-b7f8-9db8a5f1c6c6",
                     "name": "Create or update testfile",
                     "request": {
                     "method": "PUT",
@@ -106,7 +106,7 @@
                 }
                 ,
                 {
-                    "_postman_id": "1ffa2642-92f6-444d-af3f-aa50fd44ceae",
+                    "_postman_id": "c7f142c5-2327-48e2-adea-6c90658923dc",
                     "name": "Delete testfile",
                     "request": {
                     "method": "DELETE",
@@ -143,7 +143,7 @@
         {
             "listen": "prerequest",
             "script": {
-                "id": "891fe84b-4926-497e-b7da-3fb748a6b868",
+                "id": "c5407959-89cb-49fa-8cc2-b9c85a940887",
                 "type": "text/javascript",
                 "exec": [
                     ""
@@ -153,7 +153,7 @@
         {
             "listen": "test",
             "script": {
-                "id": "e2f16c74-ca22-4f42-adde-2973bddfa296",
+                "id": "6bf63d9d-6645-4832-b948-41c5d90defe6",
                 "type": "text/javascript",
                 "exec": [
                     ""

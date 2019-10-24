@@ -17,7 +17,7 @@ namespace Harmony.Core.Converters
     public static class RsacYnBooleanConverter
 
         ;;; <summary>
-        ;;; Convert from a Y/N value to a boolean.
+        ;;; Convert from a Y/N value to a boolean value.
         ;;; </summary>
         ;;; <param name="ynValue">Y/N value to convert.</param>
         ;;; <returns>Returns the boolean equivalent of the Y/N value passed in.</returns>
@@ -28,7 +28,7 @@ namespace Harmony.Core.Converters
         endmethod
 
         ;;; <summary>
-        ;;; Convert from boolean to a Y/N value.
+        ;;; Convert from boolean value to a Y/N value.
         ;;; </summary>
         ;;; <param name="booleanValue">Boolean value to convert.</param>
         ;;; <returns>Returns the Y/N value of the boolean passed in.</returns>
@@ -39,7 +39,7 @@ namespace Harmony.Core.Converters
         endmethod
 
         ;;; <summary>
-        ;;; 
+        ;;; Convert from the publicly exposed value back to the storage value.
         ;;; </summary>
         public class LiteralFormatter implements ILiteralFormatter
 

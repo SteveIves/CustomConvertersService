@@ -56,7 +56,7 @@ namespace Harmony.Core.Converters
         endmethod
 
         ;;; <summary>
-        ;;; 
+        ;;; Convert from the publicly exposed value back to the storage value.
         ;;; </summary>
         public class LiteralFormatter implements ILiteralFormatter
 

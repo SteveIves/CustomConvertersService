@@ -67,52 +67,52 @@ namespace <NAMESPACE>
 ;//
 <COUNTER_1_RESET>
 <FIELD_LOOP>
-    <IF CUSTOM_NOT_HARMONY_EXCLUDE>
-      <COUNTER_1_INCREMENT>
-      <IF COUNTER_1_EQ_1>
+  <IF CUSTOM_NOT_HARMONY_EXCLUDE>
+    <COUNTER_1_INCREMENT>
+    <IF COUNTER_1_EQ_1>
         ;; Define custom property formatters
-      </IF>
-        <IF HARMONYCORE_CUSTOM_FIELD>
+    </IF>
+    <IF HARMONYCORE_CUSTOM_FIELD>
         private m<FieldSqlname>Formatter, @ILiteralFormatter, new <HARMONYCORE_CUSTOM_FIELD_TYPE>Converter.LiteralFormatter()
-        <ELSE>
-          <IF DATEORTIME>
-            <IF DATE_YYMMDD>
-              <IF CUSTOM_HARMONY_AS_STRING>
+    <ELSE>
+      <IF DATEORTIME>
+        <IF DATE_YYMMDD>
+          <IF CUSTOM_HARMONY_AS_STRING>
         private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalConverter.LiteralFormatter("XX-XX-XX")
-              <ELSE>
-        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalDateConverter.LiteralFormatter("FORMAT:YYMMDD")
-              </IF CUSTOM_HARMONY_AS_STRING>
-            </IF DATE_YYMMDD>
-            <IF DATE_YYYYMMDD>
-              <IF CUSTOM_HARMONY_AS_STRING>
-        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalConverter.LiteralFormatter("XXXX-XX-XX")
-              <ELSE>
-        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalDateConverter.LiteralFormatter("FORMAT:YYYYMMDD")
-              </IF CUSTOM_HARMONY_AS_STRING>
-            </IF DATE_YYYYMMDD>
-            <IF DATE_YYYYJJJ>
-        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalDateConverter.LiteralFormatter("FORMAT:YYYYJJJ")
-            </IF DATE_YYYYJJJ>
-            <IF TIME>
-              <IF CUSTOM_HARMONY_AS_STRING>
-              <IF TIME_HHMM>
-        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalConverter.LiteralFormatter("XX:XX")
-              </IF TIME_HHMM>
-              <IF TIME_HHMMSS>
-        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalConverter.LiteralFormatter("XX:XX:XX")
-              </IF TIME_HHMMSS>
-              <ELSE>
-        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalDateConverter.LiteralFormatter("FORMAT:HHMM")
-              </IF CUSTOM_HARMONY_AS_STRING>
-            </IF TIME>
           <ELSE>
-              <IF CUSTOM_HARMONY_AS_STRING>
+        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalDateConverter.LiteralFormatter("FORMAT:YYMMDD")
+          </IF CUSTOM_HARMONY_AS_STRING>
+        </IF DATE_YYMMDD>
+        <IF DATE_YYYYMMDD>
+          <IF CUSTOM_HARMONY_AS_STRING>
+        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalConverter.LiteralFormatter("XXXX-XX-XX")
+          <ELSE>
+        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalDateConverter.LiteralFormatter("FORMAT:YYYYMMDD")
+          </IF CUSTOM_HARMONY_AS_STRING>
+        </IF DATE_YYYYMMDD>
+        <IF DATE_YYYYJJJ>
+        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalDateConverter.LiteralFormatter("FORMAT:YYYYJJJ")
+        </IF DATE_YYYYJJJ>
+        <IF TIME>
+          <IF CUSTOM_HARMONY_AS_STRING>
+            <IF TIME_HHMM>
+        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalConverter.LiteralFormatter("XX:XX")
+            </IF TIME_HHMM>
+            <IF TIME_HHMMSS>
+        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalConverter.LiteralFormatter("XX:XX:XX")
+            </IF TIME_HHMMSS>
+          <ELSE>
+        private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalDateConverter.LiteralFormatter("FORMAT:HHMM")
+          </IF CUSTOM_HARMONY_AS_STRING>
+        </IF TIME>
+      <ELSE>
+        <IF CUSTOM_HARMONY_AS_STRING>
         private m<FieldSqlname>Formatter, @ILiteralFormatter, new SynergyDecimalConverter.LiteralFormatter("<FIELD_FORMATSTRING>")
-              <ELSE>
-              </IF CUSTOM_HARMONY_AS_STRING>
-          </IF DATEORTIME>
-        </IF HARMONYCORE_CUSTOM_FIELD>
-    </IF CUSTOM_NOT_HARMONY_EXCLUDE>
+        <ELSE>
+        </IF CUSTOM_HARMONY_AS_STRING>
+      </IF DATEORTIME>
+    </IF HARMONYCORE_CUSTOM_FIELD>
+  </IF CUSTOM_NOT_HARMONY_EXCLUDE>
 </FIELD_LOOP>
 
         ;;; <summary>
@@ -129,56 +129,24 @@ namespace <NAMESPACE>
 
             ;; Define fields
 <FIELD_LOOP>
-<IF STRUCTURE_RELATIVE>
+  <IF STRUCTURE_RELATIVE>
             AddFieldInfo("RecordNumber", "INTEGER", 4, 0, 0, false)
-</IF STRUCTURE_RELATIVE>
-    <IF CUSTOM_NOT_HARMONY_EXCLUDE>
-      <IF HARMONYCORE_CUSTOM_FIELD>
+  </IF STRUCTURE_RELATIVE>
+  <IF CUSTOM_NOT_HARMONY_EXCLUDE>
+    <IF HARMONYCORE_CUSTOM_FIELD>
+            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
+    <ELSE>
+      <IF DATEORTIME>
             AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
       <ELSE>
-        <IF DATEORTIME>
-          <IF DATE_YYMMDD>
-            <IF CUSTOM_HARMONY_AS_STRING>
+        <IF CUSTOM_HARMONY_AS_STRING>
             AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            <ELSE>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            </IF CUSTOM_HARMONY_AS_STRING>
-          </IF DATE_YYMMDD>
-          <IF DATE_YYYYMMDD>
-            <IF CUSTOM_HARMONY_AS_STRING>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            <ELSE>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            </IF CUSTOM_HARMONY_AS_STRING>
-          </IF DATE_YYYYMMDD>
-          <IF DATE_YYYYJJJ>
-            <IF CUSTOM_HARMONY_AS_STRING>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            <ELSE>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            </IF CUSTOM_HARMONY_AS_STRING>
-          </IF DATE_YYYYJJJ>
-          <IF TIME>
-            <IF CUSTOM_HARMONY_AS_STRING>
-            <IF TIME_HHMM>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            </IF TIME_HHMM>
-            <IF TIME_HHMMSS>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            </IF TIME_HHMMSS>
-            <ELSE>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            </IF CUSTOM_HARMONY_AS_STRING>
-          </IF TIME>
         <ELSE>
-            <IF CUSTOM_HARMONY_AS_STRING>
-            AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false, m<FieldSqlname>Formatter)
-            <ELSE>
             AddFieldInfo("<FieldSqlname>", "<FIELD_TYPE_NAME>", <FIELD_SIZE>, <FIELD_POSITION>, 0<FIELD_PRECISION>, false)
-            </IF CUSTOM_HARMONY_AS_STRING>
-        </IF DATEORTIME>
-      </IF HARMONYCORE_CUSTOM_FIELD>
-    </IF CUSTOM_NOT_HARMONY_EXCLUDE>
+        </IF CUSTOM_HARMONY_AS_STRING>
+      </IF DATEORTIME>
+    </IF HARMONYCORE_CUSTOM_FIELD>
+  </IF CUSTOM_NOT_HARMONY_EXCLUDE>
 </FIELD_LOOP>
 ;//
 ;//
@@ -283,13 +251,13 @@ namespace <NAMESPACE>
       </IF>
 
             data <KeyName>_KeyParts = new FieldDataDefinition[<KEY_SEGMENTS>]
-    <SEGMENT_LOOP>
-      <IF SEG_TYPE_LITERAL>
+      <SEGMENT_LOOP>
+        <IF SEG_TYPE_LITERAL>
             <KeyName>_KeyParts[<SEGMENT_NUMBER>] = AddFieldInfo("<KEY_NAME>Literal<SEGMENT_NUMBER>", "TAG_LITERAL", <SEGMENT_LENGTH>, 0, 0, false,^null,"<SEGMENT_LITVAL>")
-      <ELSE>
+        <ELSE>
             <KeyName>_KeyParts[<SEGMENT_NUMBER>] = GetFieldByName("<FieldSqlname>")
-      </IF SEG_TYPE_LITERAL>
-    </SEGMENT_LOOP>
+        </IF SEG_TYPE_LITERAL>
+      </SEGMENT_LOOP>
             AddFieldInfo("KEY_<KEY_NAME>", "COMPOSITE", 0, 0, 0, false, ^null, ^null, <KeyName>_KeyParts)
   </FOREIGN_KEY_LOOP>
 </IF STRUCTURE_ISAM>
@@ -302,9 +270,9 @@ namespace <NAMESPACE>
         ;;; <summary>
         ;;; Returns a new <StructureNoplural> object containing data from a record and a GRFA.
 <IF DEFINED_ENABLE_RELATIONS>
-<IF STRUCTURE_RELATIONS>
+  <IF STRUCTURE_RELATIONS>
         ;;; The related data properties (<RELATION_LOOP_RESTRICTED><IF MANY_TO_ONE_TO_MANY><HARMONYCORE_RELATION_NAME></IF MANY_TO_ONE_TO_MANY><IF ONE_TO_ONE><HARMONYCORE_RELATION_NAME></IF ONE_TO_ONE><IF ONE_TO_MANY_TO_ONE><HARMONYCORE_RELATION_NAME></IF ONE_TO_MANY_TO_ONE><IF ONE_TO_MANY><HARMONYCORE_RELATION_NAME></IF ONE_TO_MANY><,and></RELATION_LOOP_RESTRICTED>) will not be populated.
-</IF STRUCTURE_RELATIONS>
+  </IF STRUCTURE_RELATIONS>
 </IF DEFINED_ENABLE_RELATIONS>
         ;;; </summary>
         ;;; <param name="dataArea">The record containing the data for the new <StructureNoplural> object.</param>
@@ -411,9 +379,9 @@ namespace <NAMESPACE>
                     mreturn key<KEY_NUMBER>(1:startPos+segValueLength)
         </IF CUSTOM_HARMONY_AS_STRING>
       </IF DATEORTIME>
-        <IF MORE>
+      <IF MORE>
                 startPos += <SEGMENT_LENGTH>
-        </IF MORE>
+      </IF MORE>
     </SEGMENT_LOOP>
                 mreturn key<KEY_NUMBER>
             end
