@@ -118,7 +118,7 @@ namespace Services
             lambda AddDataObjectMappings(serviceProvider)
             begin
                 data objectProvider = new DataObjectProvider(serviceProvider.GetService<IFileChannelManager>())
-                objectProvider.AddDataObjectMapping<Services.Models.Testfile>("DAT:testfile.ism", FileOpenMode.UpdateIndexed)
+                objectProvider.AddDataObjectMapping<Testfile>("DAT:testfile.ism", FileOpenMode.UpdateIndexed)
                 mreturn objectProvider
             end
 
